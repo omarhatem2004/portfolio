@@ -1,0 +1,31 @@
+<h3>{{ editingId() ? 'Edit project' : 'Add a project' }}</h3>
+<form class="admin-form" (ngSubmit)="save()">
+    <label>
+        <span><input name="featured" type="checkbox" [(ngModel)]="featured" /> Featured project</span>
+    </label>
+    @if (featured()) {
+    <label>Badge <input name="badge" [(ngModel)]="badge" /></label>
+    <label>Subtitle <input name="subtitle" [(ngModel)]="subtitle" /></label>
+    <label>Bullets (one per line)
+        <textarea name="bullets" rows="4" [(ngModel)]="bulletsText"></textarea>
+    </label>
+    }
+    <label>Title <input name="title" [(ngModel)]="title" required /></label>
+    <label>Description <textarea name="description" rows="4" [(ngModel)]="description" required></textarea></label>
+    <label>Tags (comma separated) <input name="tags" [(ngModel)]="tagsText" /></label>
+    <button class="btn btn-sm" type="submit">Save</button>
+    @if (editingId()) {
+    <button class="btn btn-sm btn-ghost" type="button" (click)="reset()">Cancel</button>
+    }
+    <p>{{ message() }}</p>
+</form>
+
+<ul class="admin-list">
+    @for (p of projects(); track p._id) {
+    <li>
+        {{ p.title }} @if (p.featured) { (featured) }
+        <button type="button" (click)="edit(p)">Edit</button>
+        <button type="button" (click)="remove(p)">Delete</button>
+    </li>
+    }
+</ul>

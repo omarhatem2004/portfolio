@@ -1,0 +1,19 @@
+<h3>Edit profile (About + Contact)</h3>
+<form class="admin-form" (ngSubmit)="save()">
+    <label>About paragraphs (one per line)
+        <textarea name="about" rows="6" [(ngModel)]="aboutText"></textarea>
+    </label>
+    <label>Education school <input name="school" [(ngModel)]="educationSchool" /></label>
+    <label>Education lines (one per line)
+        <textarea name="education" rows="3" [(ngModel)]="educationText"></textarea>
+    </label>
+    <label>Languages (comma separated) <input name="languages" [(ngModel)]="languagesText" /></label>
+    <label>Contact lead <textarea name="lead" rows="3" [(ngModel)]="contactLead"></textarea></label>
+    <label>Email <input name="email" type="email" [(ngModel)]="email" /></label>
+    <label>Phone <input name="phone" [(ngModel)]="phone" /></label>
+    <label>LinkedIn URL <input name="linkedin" [(ngModel)]="linkedin" /></label>
+    <label>LinkedIn label <input name="linkedinLabel" [(ngModel)]="linkedinLabel" /></label>
+    <label>GitHub URL <input name="github" [(ngModel)]="github" /></label>
+    <button class="btn btn-sm" type="submit">Save</button>
+    <p>{{ message() }}</p>
+</form>

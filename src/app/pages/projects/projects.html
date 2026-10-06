@@ -1,0 +1,38 @@
+<section id="projects" class="section">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        @for (p of featured(); track p._id) {
+        <article class="project-featured">
+            <div class="project-badge">{{ p.badge }}</div>
+            <h3>{{ p.title }}</h3>
+            <p class="project-subtitle">{{ p.subtitle }}</p>
+            <p class="prose">{{ p.description }}</p>
+            <ul class="bullet-list">
+                @for (b of p.bullets; track b) {
+                <li>{{ b }}</li>
+                }
+            </ul>
+            <ul class="tag-list">
+                @for (t of p.tags; track t) {
+                <li>{{ t }}</li>
+                }
+            </ul>
+        </article>
+        }
+
+        <div class="project-grid">
+            @for (card of cards(); track card._id) {
+            <article class="project-card">
+                <h3>{{ card.title }}</h3>
+                <p>{{ card.description }}</p>
+                <ul class="tag-list">
+                    @for (t of card.tags; track t) {
+                    <li>{{ t }}</li>
+                    }
+                </ul>
+            </article>
+            }
+        </div>
+    </div>
+</section>

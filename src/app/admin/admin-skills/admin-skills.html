@@ -1,0 +1,20 @@
+<h3>{{ editingId() ? 'Edit skill group' : 'Add a skill group' }}</h3>
+<form class="admin-form" (ngSubmit)="save()">
+    <label>Title <input name="title" [(ngModel)]="title" required /></label>
+    <label>Skills (comma separated) <input name="skills" [(ngModel)]="skillsText" /></label>
+    <button class="btn btn-sm" type="submit">Save</button>
+    @if (editingId()) {
+    <button class="btn btn-sm btn-ghost" type="button" (click)="reset()">Cancel</button>
+    }
+    <p>{{ message() }}</p>
+</form>
+
+<ul class="admin-list">
+    @for (g of groups(); track g._id) {
+    <li>
+        {{ g.title }}
+        <button type="button" (click)="edit(g)">Edit</button>
+        <button type="button" (click)="remove(g)">Delete</button>
+    </li>
+    }
+</ul>

@@ -1,0 +1,26 @@
+<section id="experience" class="section section-muted">
+    <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <ol class="timeline">
+            @for(job of jobs(); track job._id){
+            <li class="timeline-item">
+                <div class="timeline-marker"></div>
+                <article class="timeline-body">
+                    <header class="timeline-header">
+                        <div>
+                            <h3>{{job.title}}</h3>
+                            <p class="timeline-org">{{job.org}}</p>
+                        </div>
+                        <time datetime="2025-08/2025-09">{{job.period}}</time>
+                    </header>
+                    <ul class="bullet-list">
+                        @for (b of job.bullets; track b){
+                        <li>{{b}}</li>
+                        }
+                    </ul>
+                </article>
+            </li>}
+
+        </ol>
+    </div>
+</section>

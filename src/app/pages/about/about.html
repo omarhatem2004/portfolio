@@ -1,0 +1,23 @@
+@if (profile(); as p) {
+<section id="about" class="section">
+    <div class="container split">
+        <div>
+            <h2 class="section-title">About</h2>
+            @for (para of p.aboutParagraphs; track para) {
+            <p class="prose">{{ para }}</p>
+            }
+        </div>
+        <aside class="info-card">
+            <h3 class="info-card-title">Education</h3>
+            <p class="info-card-org">{{ p.educationSchool }}</p>
+            <p class="info-card-detail">
+                @for (line of p.educationLines; track line) { {{ line }}<br /> }
+            </p>
+            <h3 class="info-card-title">Languages</h3>
+            <ul class="tag-list tag-list-inline">
+                @for (l of p.languages; track l) { <li>{{ l }}</li> }
+            </ul>
+        </aside>
+    </div>
+</section>
+}

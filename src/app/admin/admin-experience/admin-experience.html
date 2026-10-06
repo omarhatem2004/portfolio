@@ -1,0 +1,24 @@
+<h3>{{ editingId() ? 'Edit job' : 'Add a job' }}</h3>
+<form class="admin-form" (ngSubmit)="save()">
+    <label>Title <input name="title" [(ngModel)]="title" required /></label>
+    <label>Organization <input name="org" [(ngModel)]="org" required /></label>
+    <label>Period <input name="period" [(ngModel)]="period" required /></label>
+    <label>Bullets (one per line)
+        <textarea name="bullets" rows="5" [(ngModel)]="bulletsText"></textarea>
+    </label>
+    <button class="btn btn-sm" type="submit">Save</button>
+    @if (editingId()) {
+    <button class="btn btn-sm btn-ghost" type="button" (click)="reset()">Cancel</button>
+    }
+    <p>{{ message() }}</p>
+</form>
+
+<ul class="admin-list">
+    @for (job of jobs(); track job._id) {
+    <li>
+        {{ job.title }} · {{ job.period }}
+        <button type="button" (click)="edit(job)">Edit</button>
+        <button type="button" (click)="remove(job)">Delete</button>
+    </li>
+    }
+</ul>

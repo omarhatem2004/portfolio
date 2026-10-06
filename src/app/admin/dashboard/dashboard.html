@@ -1,0 +1,18 @@
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">Admin</h2>
+        <div class="admin-tabs">
+            @for (t of tabs; track t) {
+            <button class="btn btn-sm" type="button" (click)="tab.set(t)">{{ t }}</button>
+            }
+            <button class="btn btn-sm btn-ghost" type="button" (click)="logout()">Log out</button>
+        </div>
+
+        @switch (tab()) {
+        @case ('experience') { <app-admin-experience /> }
+        @case ('projects') { <app-admin-projects /> }
+        @case ('skills') { <app-admin-skills /> }
+        @case ('profile') { <app-admin-profile /> }
+        }
+    </div>
+</section>

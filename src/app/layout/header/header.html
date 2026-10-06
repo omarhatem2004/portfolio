@@ -1,0 +1,29 @@
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="logo" href="/">Omar Hatem <br><span class="logo-accent"></span></a>
+
+        <nav class="nav" aria-label="Primary">
+            <ul class="nav-list">
+                @for (l of links; track l.path){
+                <li>
+                    <a [routerLink]="l.path" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: l.path === '/' }">{{ l.label }}</a>
+                </li> }
+            </ul>
+        </nav>
+        <a class="btn btn-sm header-cta" routerLink="/contact">Get in touch</a>
+        <button class="nav-toggle" type="button" aria-controls="mobile-nav" [attr.aria-expanded]="open()"
+            [attr.aria-label]="open() ? 'Close menu' : 'Open menu'" (click)="toggle()">
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile" [hidden]="!open()">
+        @for (l of links; track l.path) {
+        <a [routerLink]="l.path" (click)="close()">{{ l.label }}</a>
+        }
+    </nav>
+
+
+</header>

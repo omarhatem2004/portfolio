@@ -1,0 +1,26 @@
+@if (profile(); as p) {
+<section id="contact" class="section contact-section">
+    <div class="container contact-inner">
+        <h2 class="section-title">Let's connect</h2>
+        <p class="prose contact-lead">{{ p.contactLead }}</p>
+        <div class="contact-links">
+            <a class="contact-chip" [href]="'mailto:' + p.email">
+                <span class="contact-chip-label">Email</span>
+                {{ p.email }}
+            </a>
+            <a class="contact-chip" [href]="phoneLink()">
+                <span class="contact-chip-label">Phone</span>
+                {{ p.phone }}
+            </a>
+            <a class="contact-chip" [href]="p.linkedin" target="_blank" rel="noopener noreferrer">
+                <span class="contact-chip-label">LinkedIn</span>
+                {{ p.linkedinLabel }}
+            </a>
+            <a class="contact-chip" [href]="p.github" target="_blank" rel="noopener noreferrer">
+                <span class="contact-chip-label">GitHub</span>
+                {{ p.github.replace('https://', '') }}
+            </a>
+        </div>
+    </div>
+</section>
+}
